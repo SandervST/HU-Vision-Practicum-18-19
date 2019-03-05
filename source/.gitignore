@@ -2,7 +2,10 @@
 *.pdf
 *.exe
 *.user
-
+*.ipch
+*.db
+*.opendb
+*.suo
 
 
 ExternalDLL/ExternalDLL/OpenCV/staticlib_x86_vc12/OpenCVConfig.cmake
