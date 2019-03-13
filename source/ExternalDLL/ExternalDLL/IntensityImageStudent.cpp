@@ -1,7 +1,7 @@
 #include "IntensityImageStudent.h"
 #include <algorithm>
 
-IntensityImageStudent::IntensityImageStudent() : IntensityImage() {
+IntensityImageStudent::IntensityImageStudent() : IntensityImage(), picturebuffer(nullptr) {
 	int throwError = 0, e = 1 / throwError; //Throws error without the need to include a header
 	//TODO: Nothing
 }
@@ -18,8 +18,11 @@ IntensityImageStudent::IntensityImageStudent(const int width, const int height) 
 
 IntensityImageStudent::~IntensityImageStudent() {
 	int throwError = 0, e = 1 / throwError;
-	//TODO: delete allocated objects
-	//at last do destructor
+	if (picturebuffer) {
+		delete[] picturebuffer;
+	}
+	//DONE: delete allocated objects
+
 }
 
 void IntensityImageStudent::set(const int width, const int height) {
