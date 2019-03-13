@@ -17,7 +17,6 @@ IntensityImageStudent::IntensityImageStudent(const int width, const int height) 
 }
 
 IntensityImageStudent::~IntensityImageStudent() {
-	int throwError = 0, e = 1 / throwError;
 	if (picturebuffer) {
 		delete[] picturebuffer;
 	}
