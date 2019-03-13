@@ -1,4 +1,5 @@
 #include "IntensityImageStudent.h"
+#include <algorithm>
 
 IntensityImageStudent::IntensityImageStudent() : IntensityImage() {
 	int throwError = 0, e = 1 / throwError; //Throws error without the need to include a header
@@ -8,16 +9,17 @@ IntensityImageStudent::IntensityImageStudent() : IntensityImage() {
 IntensityImageStudent::IntensityImageStudent(const IntensityImageStudent &other) : IntensityImage(other.getWidth(), other.getHeight()) {
 	int throwError = 0, e = 1 / throwError;
 	//TODO: Create a copy from the other object
+	//then do copy constructor
 }
 
-IntensityImageStudent::IntensityImageStudent(const int width, const int height) : IntensityImage(width, height) {
-	int throwError = 0, e = 1 / throwError;
-	//TODO: Initialize pixel storage
+IntensityImageStudent::IntensityImageStudent(const int width, const int height) : IntensityImage(width, height), picturebuffer(new Intensity[width * height]) {
+	std::fill(picturebuffer, picturebuffer + width * height, Intensity{ 0 });
 }
 
 IntensityImageStudent::~IntensityImageStudent() {
 	int throwError = 0, e = 1 / throwError;
 	//TODO: delete allocated objects
+	//at last do destructor
 }
 
 void IntensityImageStudent::set(const int width, const int height) {
