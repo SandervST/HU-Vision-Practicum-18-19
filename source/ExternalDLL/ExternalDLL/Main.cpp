@@ -9,14 +9,17 @@
 #include "HereBeDragons.h"
 #include "ImageFactory.h"
 #include "DLLExecution.h"
+#include <chrono>
 
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
 
 int main(int argc, char * argv[]) {
 
-	ImageFactory::setImplementation(ImageFactory::DEFAULT);
-	//ImageFactory::setImplementation(ImageFactory::STUDENT);
+	auto start = std::chrono::high_resolution_clock::now();
+
+	//ImageFactory::setImplementation(ImageFactory::DEFAULT);
+	ImageFactory::setImplementation(ImageFactory::STUDENT);
 
 
 	ImageIO::debugFolder = "C:\\ti-software\\HU-Vision-Practicum-18-19\\debug";
@@ -39,11 +42,14 @@ int main(int argc, char * argv[]) {
 
 
 	if (executeSteps(executor)) {
+		auto stop = std::chrono::high_resolution_clock::now();
+
 		std::cout << "Face recognition successful!" << std::endl;
 		std::cout << "Facial parameters: " << std::endl;
 		for (int i = 0; i < 16; i++) {
 			std::cout << (i+1) << ": " << executor->facialParameters[i] << std::endl;
 		}
+		std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count() << " ms\n";
 	}
 
 	delete executor;
